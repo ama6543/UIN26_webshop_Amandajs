@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css">
     <title>LEGOdudes</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="shopscript.js" defer></script>
+    <script src="legodudes.js"></script>
 </head>
 <body>
     <div id="container">
         <header>
             <h1>
-                <a href="index.html"
-                img src="website_images/LD_logo.svg" alt="LEGOdudes" 
-                ></a>
+                <a href="index.html">
+                <img src="website_images/LD_logo.svg" alt="LEGOdudes"/> 
+                </a>
             </h1>
+            <button id="cart-button">
+                <div id="cart-quantity">0</div>
+                <img src="website_images/legocart.svg" alt="handlevogn" />
+            </button>
         </header>
+        <nav>
+            <a href="#">City</a>
+            <a href="#">Ninjago</a>
+            <a href="#">Castles & Knights</a>
+            <a href="#">marine & Pirates</a>
+            <a href="#">Movie character</a>
+        </nav>
+        <main>
+            <h2>Ninjago</h2>
+            <div id="product-list"></div>
+        </main>
+        <section id="cart" class="hidden">
+            <table>
+                <tr>
+                    <td class="title">PRODUKTTITTEL</td>
+                    <td class="price">PRIS</td>
+                    <td class="guantity">1</td>
+                    <td class="delete"><button>X</button></td>
+                </tr>
+            </table>
+        </section>
     </div>
 </body>
-<script src="shopscript.js" defer></script>
 </html>
