@@ -166,4 +166,19 @@ main {
         width: 100%;
         color: var(--white);
     }
+    p{
+        color: var(--white);
+        font-size: 20px;
+        font-weight: bold;
+    }
+    li{
+        color: var(--white);
+    }
+    button{
+        color: var(--white);
+        border-radius: 50%;
+        background: var(--red);
+        width: 30px;
+        height: 30px;
+    }
 }
