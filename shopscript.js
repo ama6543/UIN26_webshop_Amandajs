@@ -26,9 +26,6 @@ function fetchProducts(){
 fetchProducts()
 //Legg til i handlevogn
 function addToCart(prodid){
-    //når p.storage er null kan ikke blitt adda
-    let print = "<p>Din Handlevogn</p>"
-    let total = 0
     products.forEach((p)=>{
         if(p.storage >= 1){
             if(p.prodid == prodid){
@@ -39,24 +36,39 @@ function addToCart(prodid){
                 p.storage--
             }
         }
+        renderCart()
+        if(p.storage <= 0){
+            p.storage = 0
+        }
+    })
+     
+     fetchProducts()
+    }
+function renderCart(){
+    //når p.storage er null kan ikke blitt adda
+    let print = "<p>Din Handlevogn</p>"
+    let total = 0
+    products.forEach((p)=> {
         if(cart.includes(p.prodid)){
                 let each = cart.filter((id) => id === p.prodid).length
                 print += `<tr><td>${p.title}</td><td>${p.price}, -</td><td>x${each}</td><td class="delete"><button onclick=deleCart(${p.prodid})>X</button></td>`
                 total += Number(p.price) * each 
             }
-        if(p.storage <= 0){
-            p.storage = 0
-        }
     })
-     document.getElementById("cart").innerHTML = `<table>${print}<tr><td>Totalt: kr ${total},-</td></tr></table>`
-     fetchProducts()
-    }
+    document.getElementById("cart").innerHTML = `<table>${print}<tr><td>Totalt: kr ${total},-</td></tr></table>`
+}
 //fjerne ifra cart
 function deleCart(prodid){
     let index = cart.indexOf(prodid)
     console.log("fjern produkt med id" + index)
     cart.splice(index, 1)
-    addToCart(prodid)
     //oppdatere statues til cart antall
     document.getElementById("cart-quantity").innerHTML = cart.length
+    products.map((p) => {
+        if(p.prodid === prodid){
+            p.storage++
+        }
+    })
+    renderCart()
+    fetchProducts()
 }
